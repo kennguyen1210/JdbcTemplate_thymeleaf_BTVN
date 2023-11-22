@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- vong lap -->
+<!-- khong chi ho tro duyet danh sach ma con duyet object-->
+<div th:each="str,loop:${list}">
+    <li th:text="${loop.count + '-' + str}"></li>
+</div>
+</body>
+</html>

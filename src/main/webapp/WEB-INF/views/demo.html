@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--de su dung cu phap thymeleaf thi phai them kahi bao namespace-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--hien thi bieu-->
+<!--th:text dung de hien thi van ban-->
+<h2> ten : <span th:text="${name}"></span></h2>
+<h3>Tuoi : <span th:text="${age}"></span></h3>
+<!--<a th:href="@{/find?id=${age}}">1</a>-->
+<a th:href="@{'/find/'${age}}">2</a>
+<a th:href="@{|/find/${age}|}">3</a>
+<h3>Gioi tinh : <span th:text="${gen?'Nam':'Nu'}"></span></h3>
+<!--th:utext cho phep hien thi doan html-->
+<th:block th:utext="${html}"></th:block>
+
+<p th:text="${#calendars.format(today,'dd-MM-yyyy')}"></p>
+<!--<p th:text="${#temporals.formatISO(today)}"></pth:>-->
+<!--do message cua file property -->
+<h2 th:text="#{message.title}"></h2>
+<p th:text="#{message.content}"></p>
+<th:block th:object="${student}">
+    <li><a href="" th:text="*{id}"></a></li>
+    <li><a href="" th:text="*{name}"></a></li>
+    <li><a href="" th:text="*{age}"></a></li>
+    <li><a href="" th:text="*{sex}?'nam':'nu'"></a></li>
+<!--  th:if cau lenh dieu kien  -->
+<!--  cu phap if  -->
+    <li th:if="*{sex}" th:text="Nam"></li>
+<!--  cu phap else  -->
+    <li th:unless="*{sex}" th:text="Nu"></li>
+<!--  switch case  -->
+    <p th:switch="*{sex}">
+        <a th:case="true" href="" th:text="Nam"></a>
+        <a th:case="false" href="" th:text="Nu"></a>
+        <a th:case="*" href="" th:text="Bede"></a>
+    </p>
+</th:block>
+
+<!--<div th:switch="${page}">-->
+<!--    <div th:case="add" th:insert="/admin.html::add"></div>-->
+<!--    <div th:case="edit" th:insert="/edit.html::edit"></div>-->
+<!--</div>-->
+</body>
+</html>

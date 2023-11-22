@@ -29,7 +29,7 @@ public class CategoryController {
         if(search.isEmpty()){
             return "redirect:/category";
         }
-        model.addAttribute(categoryDao.findByName(search));
+        model.addAttribute("list",categoryDao.findByName(search));
         return "admin/category";
     }
     @GetMapping("/edit/{id}")
